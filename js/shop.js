@@ -95,6 +95,7 @@ const buy = (event) => {
         lookingCart.quantity += 1;
     }
     updateQtyTotal();
+    calculateTotal();
 }
 
 // Exercise 2
@@ -106,6 +107,10 @@ const cleanCart = () =>  {
 // Exercise 3
 const calculateTotal = () =>  {
     // Calculate total price of the cart using the "cartList" array
+    const totalAmount = cart.reduce((summary = 0, actualProduct) => {
+        summary += actualProduct.quantity * actualProduct.price;
+        return summary;
+    }, 0)
 }
 
 // Exercise 4

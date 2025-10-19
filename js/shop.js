@@ -74,12 +74,9 @@ const cart = [];
 
 const total = 0;
 
-const qtyTotal = () => {
-    let summary = 0;
-    cart.forEach(productToBuy => {
-        summary += productToBuy.quantity;
-    })
-    return summary;
+// Update the number of products in the cart
+const updateQtyTotal = () => {
+    document.getElementById('count_product').innerHTML = cart.length;
 }
 
 // Exercise 1
@@ -97,13 +94,13 @@ const buy = (event) => {
     } else {  // Si está en el carrito
         lookingCart.quantity += 1;
     }
-    // Addendum: Update the number of products in the cart
-    document.getElementById('count_product').innerHTML = qtyTotal();
+    updateQtyTotal();
 }
 
 // Exercise 2
 const cleanCart = () =>  {
     cart.length = 0;
+    updateQtyTotal();
 }
 
 // Exercise 3

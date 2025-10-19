@@ -103,7 +103,7 @@ const buy = (event) => {
 
 // Exercise 2
 const cleanCart = () =>  {
-    
+    cart.length = 0;
 }
 
 // Exercise 3
@@ -139,3 +139,8 @@ let buttonPressed = document.querySelectorAll('.add-to-cart');
 for (const buttonClick of buttonPressed) {
     buttonClick.addEventListener('click', buy);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cleanCartButton = document.getElementById('clean-cart');
+    cleanCartButton.addEventListener('click', cleanCart); 
+});

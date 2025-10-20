@@ -89,12 +89,16 @@ const buy = (event) => {
     // 2. Add found product to the cart array
     const lookingCart = cart.find(object => object.id === productToBuy.id)
     if (!lookingCart) {  // El producto no está en el carrito
-        productToBuy.quantity = 1;
-        cart.push(productToBuy)
+        const newCartItem = {...productToBuy, quantity: 1};
+        if (newCartItem.offer) {
+            newCartItem.offer = { ...newCartItem.offer }; 
+        }
+        cart.push(newCartItem)
     } else {  // Si está en el carrito
         lookingCart.quantity += 1;
     }
     updateQtyTotal();
+    applyPromotionsCart();
     console.log(calculateTotal());
 }
 
@@ -111,12 +115,20 @@ const calculateTotal = () =>  {
         summary += actualProduct.quantity * actualProduct.price;
         return summary;
     }, 0)
-    return totalAmount;
+    return totalAmount.toFixed(2);
 }
 
 // Exercise 4
 const applyPromotionsCart = () =>  {
     // Apply promotions to each item in the array "cart"
+    cart.forEach((cartProduct, index) => {
+        if (cartProduct.hasOwnProperty('offer')) {
+            if ((cartProduct.quantity >= cartProduct.offer.number) && !cartProduct.offer.hasOwnProperty('applied')) {
+                cart[index].price = cartProduct.price * ((100 - cartProduct.offer.percent) / 100);
+                cart[index].offer.applied = true;
+            }
+        } 
+    })
 }
 
 // Exercise 5

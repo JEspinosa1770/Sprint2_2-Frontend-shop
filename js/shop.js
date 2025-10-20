@@ -111,8 +111,14 @@ const cleanCart = () =>  {
 // Exercise 3
 const calculateTotal = () =>  {
     // Calculate total price of the cart using the "cartList" array
+    let priceToUse = 0;
     const totalAmount = cart.reduce((summary, actualProduct) => {
-        summary += actualProduct.quantity * actualProduct.price;
+        if (actualProduct.hasOwnProperty('subtotalWithDiscount')) {
+            priceToUse = actualProduct.subtotalWithDiscount;
+        } else {
+            priceToUse = actualProduct.price;
+        }
+        summary += actualProduct.quantity * priceToUse;
         return summary;
     }, 0)
     return totalAmount.toFixed(2);
@@ -123,9 +129,8 @@ const applyPromotionsCart = () =>  {
     // Apply promotions to each item in the array "cart"
     cart.forEach((cartProduct, index) => {
         if (cartProduct.hasOwnProperty('offer')) {
-            if ((cartProduct.quantity >= cartProduct.offer.number) && !cartProduct.offer.hasOwnProperty('applied')) {
-                cart[index].price = cartProduct.price * ((100 - cartProduct.offer.percent) / 100);
-                cart[index].offer.applied = true;
+            if (cartProduct.quantity >= cartProduct.offer.number) {
+                cart[index].subtotalWithDiscount = cartProduct.price * ((100 - cartProduct.offer.percent) / 100);
             }
         } 
     })

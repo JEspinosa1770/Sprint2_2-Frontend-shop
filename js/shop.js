@@ -99,13 +99,14 @@ const buy = (event) => {
     }
     updateQtyTotal();
     applyPromotionsCart();
-    console.log(calculateTotal());
+    calculateTotal();
 }
 
 // Exercise 2
 const cleanCart = () =>  {
     cart.length = 0;
     updateQtyTotal();
+    printCart();
 }
 
 // Exercise 3
@@ -140,6 +141,42 @@ const applyPromotionsCart = () =>  {
 // Exercise 5
 const printCart = () => {
     // Fill the shopping cart modal manipulating the shopping cart dom
+    const parentElement = document.getElementById('cart_list');
+    const blockToWrite = document.createDocumentFragment();
+    parentElement.innerHTML = '';
+    let priceProduct = 0;
+
+    cart.forEach(cartProduct => {
+        const newTr = document.createElement('tr');
+
+        const thName = document.createElement('th');
+        thName.setAttribute('scope', 'row'); 
+        thName.textContent = cartProduct.name;
+        newTr.appendChild(thName);
+
+        const tdPrice = document.createElement('td');
+        priceProduct = cartProduct.price;
+        if (cartProduct.hasOwnProperty('offer')) {
+            if (cartProduct.quantity >= cartProduct.offer.number) {
+                tdPrice.style.color = "red";
+                priceProduct = cartProduct.subtotalWithDiscount;
+            }
+        }
+        tdPrice.textContent = priceProduct;
+        newTr.appendChild(tdPrice);
+
+        const tdQuantity = document.createElement('td');
+        tdQuantity.textContent = cartProduct.quantity;
+        newTr.appendChild(tdQuantity);
+
+        const tdsubTotal = document.createElement('td');
+        tdsubTotal.textContent = (cartProduct.quantity * priceProduct).toFixed(2);
+        newTr.appendChild(tdsubTotal);
+
+        blockToWrite.appendChild(newTr);
+    }) 
+    parentElement.appendChild(blockToWrite);
+    calculateTotal();
 }
 
 
@@ -164,4 +201,7 @@ for (const buttonClick of buttonPressed) {
 document.addEventListener('DOMContentLoaded', () => {
     const cleanCartButton = document.getElementById('clean-cart');
     cleanCartButton.addEventListener('click', cleanCart); 
+    
+    const cartButton = document.getElementById('cart-button');
+    cartButton.addEventListener('click', open_modal);
 });

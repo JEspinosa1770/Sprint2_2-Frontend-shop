@@ -121,6 +121,7 @@ const calculateTotal = () =>  {
         summary += actualProduct.quantity * priceToUse;
         return summary;
     }, 0)
+    document.getElementById('total_price').innerHTML = totalAmount.toFixed(2);
     return totalAmount.toFixed(2);
 }
 

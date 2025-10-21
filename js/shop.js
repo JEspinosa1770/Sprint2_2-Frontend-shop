@@ -200,8 +200,12 @@ for (const buttonClick of buttonPressed) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const cleanCartButton = document.getElementById('clean-cart');
-    cleanCartButton.addEventListener('click', cleanCart); 
+    if (cleanCartButton) { // To prevent fails in checkout.js
+        cleanCartButton.addEventListener('click', cleanCart); 
+    }
     
     const cartButton = document.getElementById('cart-button');
-    cartButton.addEventListener('click', open_modal);
+    if (cartButton) {
+        cartButton.addEventListener('click', open_modal);
+    }
 });

@@ -133,6 +133,8 @@ const applyPromotionsCart = () =>  {
         if (cartProduct.hasOwnProperty('offer')) {
             if (cartProduct.quantity >= cartProduct.offer.number) {
                 cart[index].subtotalWithDiscount = cartProduct.price * ((100 - cartProduct.offer.percent) / 100);
+            } else {
+                delete cart[index].subtotalWithDiscount;
             }
         } 
     })
@@ -173,6 +175,16 @@ const printCart = () => {
         tdsubTotal.textContent = (cartProduct.quantity * priceProduct).toFixed(2);
         newTr.appendChild(tdsubTotal);
 
+        const tdbuttonRemoveOne = document.createElement('td');
+        const removeButtonOne = document.createElement('button'); 
+        removeButtonOne.textContent = '-1'; 
+        removeButtonOne.className = 'btn btn-sm btn-outline-danger'; // buscar estilos mejores
+        removeButtonOne.onclick = () => {
+            removeFromCart(cartProduct.id); 
+        };
+        tdbuttonRemoveOne.appendChild(removeButtonOne);
+        newTr.appendChild(tdbuttonRemoveOne);
+
         blockToWrite.appendChild(newTr);
     }) 
     parentElement.appendChild(blockToWrite);
@@ -184,7 +196,17 @@ const printCart = () => {
 
 // Exercise 7
 const removeFromCart = (id) => {
-    
+    const productToUse = cart.find( product => product.id == id);
+    if (productToUse.quantity > 1) {
+        productToUse.quantity --;
+        applyPromotionsCart();
+    } else {
+        const productToErase = cart.findIndex(product => product.id == id);
+        (productToErase != -1) ? cart.splice(productToErase, 1) : console.log("Error");
+    }
+    printCart();
+    updateQtyTotal();
+    calculateTotal();
 }
 
 const open_modal = () =>  {

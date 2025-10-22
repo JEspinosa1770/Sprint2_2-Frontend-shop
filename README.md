@@ -1,66 +1,141 @@
-# Sprint 2 IT Academy | Shop
 
+![Custom badge](https://img.shields.io/badge/STATUS-Demo%20Completed-color)
+
+# 🏬 Sprint 2 IT Academy | E-commerce Demo
+![Department Store Image](./images/heidi-fin-2TLREZi7BUg-unsplash.jpg)
 ## Introduction
 
-A company in the e-commerce sector has asked us for a web application that allows them to offer the purchase of their products through the internet.
-
-You will be in charge of setting up an initial demo version of the application for the client: management of the shopping cart and the application of the promotions on the final price. You have 1 week to finish this part of sprint (2.2).
+A proof of concept web application for an **e-commerce** company, focused on shopping cart management and applying dynamic promotions on the final price. Also included is basic Checkout form validation.
+Sprint 2.2 IT Academy.
 
 <br>
 
-## Requirements
+## Table of contents
+1. [🚀 Starting](#starting)
+    * [Requirements](#Requirements)
+    * [Installation](#Installation)
+2. 📁 [Folder structure](#folder-structure)
+2.  [📝 Features](#features)
+3.  [💻 Technologies Used](#technologies-used)
+4.  [📂 Project Structure](#project-structure)
+5.  [🤝 Contributions and Contact](#Contributions)
 
+<br>
 
-1. Clone this repo
+## 🚀 Starting
+How to start the project
+### Requirements
+This project can be run directly in any modern web browser, as it only uses HTML, CSS, and JavaScript files.
+* **Modern Web Browser** (Chrome, Firefox, Edge, Safari, etc.)
+* (Optional, but recommended) **Live Server** or similar to serve the files locally.
+### Installation
+No external dependencies are required. The project can be run directly in the browser.
+
+1.  Go to the local folder where you want to clone the repository.
+2.  Clone the repository with the bash terminal:
 ```bash
-$ git clone https://github.com/IT-Academy-BCN/starter-code-frontend-shop
+$ git clone https://github.com/JEspinosa1770/Sprint2_2-Frontend-shop
 ```
-
-2. Unlink your repo from the itacademy repository.
-(Explanation: You have to upload the code to your GitHub repository, not to the IT Academy. That's why you have to unlink your project from IT Academy GitHub with the following command)
-
+3. Go to the folder of the project
 ```bash
-$ git remote rm origin
+$ cd Sprint2_2-Frontend-shop
 ```
-
-3. Link your repo to the repository you have to create in your github account
-(Explanation: Now your project is not linked to any remote repository. In order to upload your code, you have to link your project to the new repository created on github.com using the following command)
-
-```bash
-$ git remote add origin <your repo name!>
-```
+4. Open the index.html with your preferred browser
 
 <br>
 
-## Submission
+## 📁 Folder structure
+General outline of the exercise folder structure.
 
-1. It is necessary to upload each exercise in a separate commit. The commit name must clearly indicate its content.
-
-2. Upload the link to your GitHub repository to the virtual campus, enabling your mentor to review and provide feedback.
-
-
+![Folder structure](./images/Folder%20structure.jpg)
 
 <br>
 
-## Introduction
+## 📝 Features
+The main logic of the application is found in the files `js/shop.js` and `js/checkout.js`.
+### Shopping Cart Management (`js/shop.js`)
 
-The statement of the exercise is available on the virtual campus.
+<div width='50%' style='text-align: center'>
+<img src="./images/Add to the cart.jpg" width="60%" alt="Add to the cart">
+<p>
+
+**Adding products to the cart (`buy()`):** Allows you to add products to the cart, managing the quantity if the product exists.</p></div>
+<br>
+<div width='50%' style='text-align: center'>
+<img src="./images/Cleaning cart.jpg" width="35%" alt="Erase cart">
+<p>
+
+**Emptying the cart (`cleanCart()`):** Resets the cart's variable.</p></div>
+<br>
+<div width='50%' style='text-align: center'>
+<img src="./images/Show cart.jpg" width="35%" alt="Print the cart">
+<p>
+
+**Show cart (`printCart()`):** Dynamically render the products of the cart in the modal, including prices, quantities and subtotals.</p></div>
+<br>
+<div width='50%' style='text-align: center'>
+<img src="./images/Remove from cart.jpg" width="35%" alt="Remove from cart">
+<p>
+
+**Subtract/Eliminate products (`removeFromCart()`):** Allows you to decrease the quantity of a product from the cart or remove it completely if the quantity is 1.</p></div>
+<br>
+<div width='50%' style='text-align: center'>
+<img src="./images/Calculate Total.jpg" width="35%" alt="Remove from cart">
+<p>
+
+**Calculation of the Total (`calculateTotal()`):** Calculates the total sum of the products with discounts, highlighting in red the price that has a discount applied.</p></div>
+<br>
+<div width='50%' style='text-align: center'>
+<img src="./images/Discounts.jpg" width="65%" alt="Application promotions">
+<p>
+
+**Promotions Application (`applyPromotionsCart()`):** Modify the shopping cart amounts based on whether the criteria for applying offers for different products are met.</p></div>
+
+
+
+### Checkout Form Validation (`js/checkout.js`)
+Form validation has been implemented for `checkout.html` to ensure that all fields meet the required conditions.
+
+<div width='50%' style='text-align: center'>
+<img src="./images/Checkout.jpg" width="55%" alt="Application promotions">
+</div>
+
+**Validation Conditions:**
+* Required fields (minimum 3 characters).
+* First and Last Name: Letters only.
+* Phone: Numbers only.
+* Password: Letters and numbers, and 4 to 8 characters.
+* Email: Valid email format.
+* **User Feedback:** Errors are highlighted with Bootstrap's `is-invalid` class and dynamic error messages are displayed below the input.
+### Layout
+A **professional layout** has been performed to improve the visual appearance of the demo.
+<div width='50%' style='text-align: center'>
+<img src="./images/Example layout.jpg" width="55%" alt="Application promotions">
+</div>
 
 <br>
 
+## 💻 Technologies Used
+* **HTML5**
+* **CSS3** (With predefined styles from the *starter code*)
+* **JavaScript (ES6+)** - Main logic
+* **Bootstrap** - Styling and UI components (modal, forms, etc.)
+* **Hardcoded Data** - Array of 9 sample products in `js/shop.js`
 
-## Instructions
+<br>
 
-You have the following indications from the frontend manager:
+## 📂 Project Structure
+The implemented logic is in:
+* `js/shop.js`: Shopping cart logic, calculations and prints. Data array of the 9 example products.
+* `js/checkout.js`: Checkout form validation logic.
+* `index.html`: Main page of the store.
+* `checkout.html`: Checkout form.
 
-- You have prepared the base of the project on which you will work: https://github.com/IT-Academy-BCN/starter-code-frontend-shop
+<br>
 
-- The base of the project on which you will work has already created all the files, and an initial version of the interface, so you can focus on programming the logic.
+<a name="item5"></a>
 
-- As at the moment we don't consume data from a server using an API, we will work with hardcoded data in the application. For the moment we will implement the logic using a small group of 9 products divided in 3 sections.
+## 🤝 Contributions and Contact
+This project has been developed by **Jordi Espinosa** as part of an e-commerce exercise.
 
-- Except for the last level, showing the result of the functions by console is enough.
-
-- The logic to implement will be placed in the src/grocery.js and src/checkout.js files. You will see that the built in functions have already been created for you to implement them.
-
-- It is forbidden to copy the code, since this way you don't learn anything. Furthermore, as you can see, the second release of sprint 5 is a mini-level test with the mentor, in which you will have to demonstrate live that you have acquired the javascript concepts. Don't worry, if you work on the releases you won't have any problems.
+Any suggestions or queries, please feel free to contact: **[JEspinosa](https://github.com/JEspinosa1770)**

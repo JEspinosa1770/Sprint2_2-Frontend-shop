@@ -11,14 +11,14 @@ Sprint 2.2 IT Academy.
 <br>
 
 ## Table of contents
-1. [🚀 Starting](#starting)
+1. [🚀 Starting](#-starting)
     * [Requirements](#Requirements)
     * [Installation](#Installation)
-2. 📁 [Folder structure](#folder-structure)
-2.  [📝 Features](#features)
-3.  [💻 Technologies Used](#technologies-used)
-4.  [📂 Project Structure](#project-structure)
-5.  [🤝 Contributions and Contact](#Contributions)
+2. 📁 [Folder structure](#-folder-structure)
+2.  [📝 Features](#-features)
+3.  [💻 Technologies Used](#-technologies-used)
+4.  [📂 Project Structure](#-project-structure)
+5.  [🤝 Contributions and Contact](#-Contributions-and-contact)
 
 <br>
 
